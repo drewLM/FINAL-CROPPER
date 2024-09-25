@@ -1,1 +1,3 @@
-[# FINAL-CROPPER](https://drewlm.github.io/FINAL-CROPPER/)
+Final Cropper
+https://drewlm.github.io/FINAL-CROPPER/
+
