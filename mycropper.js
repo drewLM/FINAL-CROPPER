@@ -29,7 +29,7 @@ document.getElementById('cropImageBtn').addEventListener('click', function () {
     canvas.toBlob(function (blob) {
       var formData = new FormData();
 
-      $.ajax('croppedImgs', {
+      $.ajax('https://github.com/drewLM/FINAL-CROPPER/tree/15c26929813380de5e5ebbce7e3c6725ac796ba2/croppedImgs', {
         method: 'POST',
         data: formData,
         processData: false,
