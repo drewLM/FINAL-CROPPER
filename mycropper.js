@@ -29,7 +29,7 @@ document.getElementById('cropImageBtn').addEventListener('click', function () {
     canvas.toBlob(function (blob) {
       var formData = new FormData();
 
-      $.ajax('croppedImg', {
+      $.ajax('croppedImgs', {
         method: 'POST',
         data: formData,
         processData: false,
