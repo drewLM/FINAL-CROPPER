@@ -23,9 +23,9 @@ document.getElementById('cropImageBtn').addEventListener('click', function () {
     var canvas = cropper.getCroppedCanvas({
         Width: 256,
         Height: 256,
-        }).toDataURL('image/png');
+        });
 
-    document.getElementById('output').src = canvas;
+    document.getElementById('output').src = canvas.toDataURL('image/png');
     canvas.toBlob(function (blob) {
       var formData = new FormData();
 
