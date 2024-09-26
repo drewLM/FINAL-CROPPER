@@ -1,5 +1,8 @@
+
+
 var width = 1;
-var height = 10;
+var height = 1;
+
 
 const image = document.getElementById('image');
 const cropper = new Cropper(image, {
@@ -18,32 +21,39 @@ const cropper = new Cropper(image, {
     center: false,
 });
 
-document.getElementById('cropImageBtn').addEventListener('click', function () {
+function reloadCropper () {
+  cropper.replace(url);
+}
+
+
+document.getElementById('cropImageBtn').addEventListener('click', function cropCanvas () {
     
     var canvas = cropper.getCroppedCanvas({
         Width: 256,
         Height: 256,
         });
+    
+        
+    const canvasURL = canvas.toDataURL('image/jpeg');
+    const ctx = canvas.getContext('2d');
+    const imageData = ctx.getImageData(0,0,imageWidth, imageHeight);
+    const buffer = imageData.data.buffer;  
 
-    document.getElementById('output').src = canvas.toDataURL('image/png');
-    canvas.toBlob(function (blob) {
-      var formData = new FormData();
-
-      $.ajax('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success() {
-          console.log('Upload success');
-          cropperDestory();
-        },
-        error() {
-          console.log('Upload error');
-          refreshCropper();
-        },
-      });
-    }, 'image/png');
+    
+    document.getElementById('output').src = canvasURL;
 
 
-});
+  });
+ 
+  window.onmessage = e => {
+    let {data} = e;
+    if(data.toUpdateImageURL) {
+        width = data.widthupdate;
+        height = data.heightupdate;
+
+        let url = data.updateImageURL;
+        reloadCropper(url);
+        
+    
+    }
+}
