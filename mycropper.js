@@ -35,9 +35,7 @@ document.getElementById('cropImageBtn').addEventListener('click', function cropC
     
         
     const canvasURL = canvas.toDataURL('image/jpeg');
-    const ctx = canvas.getContext('2d');
-    const imageData = ctx.getImageData(0,0,imageWidth, imageHeight);
-    const buffer = imageData.data.buffer;  
+
 
     
     document.getElementById('output').src = canvasURL;
