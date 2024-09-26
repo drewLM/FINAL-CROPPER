@@ -7,9 +7,12 @@ img{
 .container {
     object-fit: contain;
     max-height: 80vh;
+    justify-content: center;
 }
 
 #output {
     margin: 0 5px;
+    max-height: 20vh;
+    justify-content: center;
 }
 
