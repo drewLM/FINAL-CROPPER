@@ -7,6 +7,17 @@
   <title>Cropper.js</title>
   <link rel="stylesheet" href="js/cropper.css">
     <link rel="stylesheet" href="Style.css">
+  <style>      
+  
+    canvas {
+    margin: 20px 0px;
+    left: 50%;
+    border: 1px solid black;
+    max-width: 70%;
+    min-width: 50%;
+    max-height: 80vh;
+
+  }</style>
 </head>
 
 <body>
@@ -17,17 +28,20 @@
 
     <div class="container">
         <button id="cropImageBtn">Crop Image</button>        
+        <button id="uploadImageBtn">Upload Image</button>        
     </div>
 
-    <div>
-      <h1><span id="base64"></span></h1>
-        <img src="" id="output">
+    <div class="img-container" id="img-cropped">
+            <div class="dummy" style="height:20vh"></div>
     </div>
     
-      
-    <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
-  
-    <script defer src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
+
+    <script
+    defer
+    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script defer src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
 
   <script defer src="js/jquery-cropper.js"></script>
   <script defer src="mycropper.js"></script>
