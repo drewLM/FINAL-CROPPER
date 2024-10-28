@@ -1,5 +1,3 @@
-import Cropper from "cropperjs";
-
 var width = 1;
 var height = 1;
 
