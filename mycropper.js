@@ -19,25 +19,6 @@ const wallpaper = new Cropper(image, {
     center: false,
 });
 
-
-document.getElementById('cropImageBtn').addEventListener('click', function cropCanvas () {
-    
-    var canvas = wallpaper.getCroppedCanvas({
-        Width: 256,
-        Height: 256,
-        });
-    
-        
-    const canvasURL = canvas.toDataURL('image/jpeg');
-    const ctx = canvas.getContext('2d');
-    const imageData = ctx.getImageData(0,0,imageWidth, imageHeight);
-    const buffer = imageData.data.buffer;  
-
-    
-    document.getElementById('output').src = canvasURL;
-
-
-  });
  
   window.onmessage = e => {
     let {data} = e;
