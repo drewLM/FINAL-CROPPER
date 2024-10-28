@@ -1,4 +1,8 @@
 const $image = $('#image');
+const $cropBtn =  $('#cropImageBtn');
+const $uploadBtn = $('#uploadImageBtn');
+const $imageCropped = $('#img-cropped');
+
 
 var width = 1;
 var height = 1;
@@ -24,16 +28,39 @@ function cropperInit() {
     $image.cropper({
     aspectRatio: width/height,
     crop: function(event) {
-            canvas = $image.cropper("getCroppedCanvas", {
-            });        
-   
-    
-        }
+      canvas = $image.cropper("getCroppedCanvas", {
+      }); 
+    }
     });
 }
- 
+
+$cropBtn.on('click', function cropCanvas(){
+  $("#img-cropped").empty();
+  $imageCropped.append(canvas);
+
+});
+
 function cropperDestory() {
   $image.cropper("destroy"); 
+}
+ 
+$uploadBtn.on('click',function(e) {
+  const base64 = canvas.toDataURL();
+  const ctx = canvas.getContext('2d');
+  const imageData = ctx.getImageData(0,0,imageWidth, imageHeight);
+  const buffer = imageData.data.buffer;  
+  console.log("uploading...");
+  console.log({canvasData, buffer, imageData});
+  sendData({buffer, base64});
+});
+
+function sendData(data) {
+  let msg = {
+      "isCropper" : true,
+  }
+  msg = {...msg, ...data};
+  console.log("message : " , msg);
+  window.parent.postMessage(msg, "*");
 }
 
 function updateCropperImage(url) {
@@ -59,3 +86,9 @@ window.onmessage = e => {
   
   }
 }
+
+sendData({ready: true});
+
+
+
+
