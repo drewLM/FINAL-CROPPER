@@ -1,11 +1,13 @@
 const image = document.getElementById('image');
+var wallpaper;
 
 window.onmessage = e => {
     let {data} = e;
     if(data.toUpdateImageURL) {
         let width = data.widthupdate;
         let height = data.heightupdate;
-        const wallpaper = new Cropper(image, {
+        wallpaper.destroy();
+        wallpaper = new Cropper(image, {
           viewMode: 1,
           dragMode: 'move',
           aspectRatio: width / height,
