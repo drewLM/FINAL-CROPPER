@@ -25,6 +25,7 @@ const wallpaper = new Cropper(image, {
     if(data.toUpdateImageURL) {
         width = data.widthupdate;
         height = data.heightupdate;
+        wallpaper.destroy;
 
         let url = data.updateImageURL;
         wallpaper.replace(url);
