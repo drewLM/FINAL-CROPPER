@@ -19,10 +19,6 @@ const wallpaper = new Cropper(image, {
     center: false,
 });
 
-function updateCropperImage(url) {
-  wallpaper.replace(url);
-}
-
 
 document.getElementById('cropImageBtn').addEventListener('click', function cropCanvas () {
     
@@ -50,7 +46,7 @@ document.getElementById('cropImageBtn').addEventListener('click', function cropC
         height = data.heightupdate;
 
         let url = data.updateImageURL;
-        updateCropperImage(url);
+        wallpaper.replace(url);
         
     }
 }
