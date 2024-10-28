@@ -1,11 +1,11 @@
-
+import Cropper from "cropperjs";
 
 var width = 1;
 var height = 1;
 
 
 const image = document.getElementById('image');
-const cropper = new Cropper(image, {
+const wallpaper = new Cropper(image, {
     viewMode: 1,
     dragMode: 'move',
     aspectRatio: width / height,
@@ -21,21 +21,23 @@ const cropper = new Cropper(image, {
     center: false,
 });
 
-function reloadCropper () {
-  cropper.replace(url);
+function updateCropperImage(url) {
+  wallpaper.replace(url);
 }
 
 
 document.getElementById('cropImageBtn').addEventListener('click', function cropCanvas () {
     
-    var canvas = cropper.getCroppedCanvas({
+    var canvas = wallpaper.getCroppedCanvas({
         Width: 256,
         Height: 256,
         });
     
         
     const canvasURL = canvas.toDataURL('image/jpeg');
-
+    const ctx = canvas.getContext('2d');
+    const imageData = ctx.getImageData(0,0,imageWidth, imageHeight);
+    const buffer = imageData.data.buffer;  
 
     
     document.getElementById('output').src = canvasURL;
@@ -50,8 +52,7 @@ document.getElementById('cropImageBtn').addEventListener('click', function cropC
         height = data.heightupdate;
 
         let url = data.updateImageURL;
-        reloadCropper(url);
+        updateCropperImage(url);
         
-    
     }
 }
