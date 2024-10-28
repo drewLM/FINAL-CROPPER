@@ -39,7 +39,7 @@ function cropperInit(){
 }
 
 function cropperDestory() {
-  wallpaper.destroy(); 
+  wallpaper.Cropper.destroy(); 
 }
 
 function refreshCropper() {
