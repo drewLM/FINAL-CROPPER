@@ -42,9 +42,9 @@ $cropBtn.on('click', function cropCanvas(){
 });
 
 $uploadBtn.on('click', function cropCanvas(){
-  var croppedcanvas = new Blob ([$imageCropped], {type: "image/png"});
-  var canvasURL = URL.createObjectURL(croppedcanvas);
-  console.log(canvasURL);
+  var croppedcanvas = $image.cropper("getCroppedCanvas").toDataURL("image/png",0.5);
+  window.parent.postMessage(croppedcanvas, "*");
+  console.log(croppedcanvas);
 });
 
 function cropperDestory() {
