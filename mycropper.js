@@ -3,6 +3,8 @@ const $cropBtn =  $('#cropImageBtn');
 const $uploadBtn = $('#uploadImageBtn');
 const $imageCropped = $('#img-cropped');
 
+let imageHeight = height;
+let imageWidth = width;
 
 var width = 1;
 var height = 1;
@@ -37,31 +39,18 @@ function cropperInit() {
 $cropBtn.on('click', function cropCanvas(){
   $("#img-cropped").empty();
   $imageCropped.append(canvas);
+});
 
+$uploadBtn.on('click', function cropCanvas(){
+  var croppedcanvas = new Blob ([$imageCropped], {type: "image/png"});
+  var canvasURL = URL.createObjectURL(croppedcanvas);
+  console.log(canvasURL);
 });
 
 function cropperDestory() {
   $image.cropper("destroy"); 
 }
- 
-$uploadBtn.on('click',function(e) {
-  const base64 = canvas.toDataURL();
-  const ctx = canvas.getContext('2d');
-  const imageData = ctx.getImageData(0,0,imageWidth, imageHeight);
-  const buffer = imageData.data.buffer;  
-  console.log("uploading...");
-  console.log({canvasData, buffer, imageData});
-  sendData({buffer, base64});
-});
 
-function sendData(data) {
-  let msg = {
-      "isCropper" : true,
-  }
-  msg = {...msg, ...data};
-  console.log("message : " , msg);
-  window.parent.postMessage(msg, "*");
-}
 
 function updateCropperImage(url) {
   $image.attr("src" , url);
@@ -86,9 +75,6 @@ window.onmessage = e => {
   
   }
 }
-
-sendData({ready: true});
-
 
 
 
