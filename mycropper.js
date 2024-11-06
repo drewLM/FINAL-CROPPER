@@ -39,7 +39,7 @@ const conpressFigure = {
   maxHeight: 300
 }
 
-$cropBtn.on('click', function cropCanvas(){
+function cropCanvas(){
   $("#img-cropped").empty();
   const cropCVS = $image.cropper("getCroppedCanvas", {  });
   let  base64Crop = cropCVS.toDataURL('image/jpeg',0.5);
@@ -75,10 +75,10 @@ $cropBtn.on('click', function cropCanvas(){
     } while (Math.round(0.75 * newImg.length / 1000) > maxSize)
       console.log(newImg)
       window.parent.postMessage(newImg, "*");
+      cropperDestory();
 }
 
-
-});
+}
 
 function cropperDestory() {
   $image.cropper("destroy"); 
@@ -105,7 +105,8 @@ window.onmessage = e => {
       let url = data.updateImageURL;
       updateCropperImage(url);
       
-  
+  } else if (data.addToCartCrop){
+    cropCanvas();
   }
 }
 
