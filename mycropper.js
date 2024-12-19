@@ -23,7 +23,6 @@ zoomable: false,
 background:false,
 guides: false,
 center: false,
-minCropBoxWidth: 1, 
 });
 
 cropperInit();
