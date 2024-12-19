@@ -11,7 +11,7 @@ var width = 1;
 var height = 1;
 
 $image.cropper.setDefaults({
-viewMode: 1,
+viewMode: 0,
 dragMode: 'move',
 autoCropArea: 1,
 restore: false,
