@@ -1,6 +1,5 @@
 img{
     display: block;
-    max-height: 100%;
     max-width: 100%;
 }
 
@@ -10,10 +9,11 @@ img{
   position: absolute;
   right: 0;
   top: 0;
+    width: 100%;
 }
 
 #output {
     margin: 0 5px;
-    max-height: 20vh;
+    max-height: 0vh;
     justify-content: center;
 }
