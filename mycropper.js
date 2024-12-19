@@ -14,7 +14,7 @@ $image.cropper.setDefaults({
 viewMode: 1,
 dragMode: 'move',
 autoCropArea: 1,
-restore: true,
+restore: false,
 center: false,
 cropBoxMovable: false,
 cropBoxResizable: false,
