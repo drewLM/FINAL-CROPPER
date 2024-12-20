@@ -31,8 +31,7 @@ function cropperInit() {
     $image.cropper({
     aspectRatio: width/height, 
     });
-   var contData = $image.cropper("getContainerData");
-    $image.cropper("setCropBoxData"({ height: contData.height, width: contData.width  }));
+
 }
 
 const conpressFigure = {
