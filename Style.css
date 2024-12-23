@@ -1,4 +1,5 @@
 img{
+  max-width: 100%,
   
 }
 
@@ -14,4 +15,9 @@ img{
     margin: 0 5px;
     max-height: 0vh;
     justify-content: center;
+}
+
+.breakout {
+  margin:1em -100%;
+  margin:1em calc(50% - 50vw);
 }
