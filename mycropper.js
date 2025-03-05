@@ -10,7 +10,7 @@ let imageWidth = width;
 var width = 1;
 var height = 1;
 
-$image.cropper.setDefaults({
+$image.cropper({
 viewMode: 1,
 dragMode: 'move',
 autoCropArea: 1,
