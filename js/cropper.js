@@ -1,4 +1,4 @@
-import DEFAULTS from './defaults';
+import DEFAULTS from 'js/defaults';
 import TEMPLATE from './template';
 import render from './render';
 import preview from './preview';
