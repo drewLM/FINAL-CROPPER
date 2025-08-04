@@ -44,7 +44,7 @@ const conpressFigure = {
 function cropCanvas(){
   $("#img-cropped").empty();
   const cropCVS = $image.cropper("getCroppedCanvas", {  });
-  let  base64Crop = cropCVS.toDataURL('image/jpeg',0.5);
+  let  base64Crop = cropCVS.toDataURL('image/jpeg', 1);
   let img = new Image()
   img.src = base64Crop
   img.onload = function () {
