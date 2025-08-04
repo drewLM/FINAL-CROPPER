@@ -35,9 +35,9 @@ function cropperInit() {
 }
 
 const conpressFigure = {
-  maxSize: 250, // Increased size limit
-  maxWidth: 600,
-  maxHeight: 600
+  maxSize: 500, // Increased size limit
+  maxWidth: 1000,
+  maxHeight: 1000
 }
 
 function cropCanvas(){
@@ -68,10 +68,10 @@ function cropCanvas(){
   canvas.height = targetHeight
   let context = canvas.getContext('2d')
   context.drawImage(img, 0, 0, canvas.width, canvas.height)
-  let compressRatio = 250
+  let compressRatio = 400
     let newImg
     do {
-      compressRatio -= 1// Reduced step for finer compression
+      compressRatio -= 2// Reduced step for finer compression
       newImg = canvas.toDataURL("image/jpeg", compressRatio / 100)
     } while (Math.round(0.9 * newImg.length / 1000) > maxSize) // Adjusted compression factor
       console.log(newImg)
