@@ -32,11 +32,10 @@ function cropperInit() {
     $image.cropper({
     aspectRatio: width/height, 
     });
-
 }
 
 const conpressFigure = {
-  maxSize: 150,
+  maxSize: 300, // Increased size limit
   maxWidth: 300,
   maxHeight: 300
 }
@@ -72,14 +71,13 @@ function cropCanvas(){
   let compressRatio = 100
     let newImg
     do {
-      compressRatio -= 2
+      compressRatio -= 1 // Reduced step for finer compression
       newImg = canvas.toDataURL("image/jpeg", compressRatio / 100)
-    } while (Math.round(0.75 * newImg.length / 1000) > maxSize)
+    } while (Math.round(0.9 * newImg.length / 1000) > maxSize) // Adjusted compression factor
       console.log(newImg)
       window.parent.postMessage(newImg, "*");
       cropperDestory();
 }
-
 }
 
 function cropperDestory() {
@@ -111,6 +109,3 @@ window.onmessage = e => {
     cropCanvas();
   }
 }
-
-
-
