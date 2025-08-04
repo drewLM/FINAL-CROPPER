@@ -71,7 +71,7 @@ function cropCanvas(){
   let compressRatio = 250
     let newImg
     do {
-      compressRatio -= 2 // Reduced step for finer compression
+      compressRatio -= 1// Reduced step for finer compression
       newImg = canvas.toDataURL("image/jpeg", compressRatio / 100)
     } while (Math.round(0.9 * newImg.length / 1000) > maxSize) // Adjusted compression factor
       console.log(newImg)
